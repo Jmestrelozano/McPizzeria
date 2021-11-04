@@ -1,0 +1,8 @@
+.footer__imageLogo {
+  width: 10%;
+}
+@media (max-width: 2560px) {
+  .footer {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,23 @@
+@media (max-width:2560px) {
+    .pizzaScreen{
+        height: 89.5vh;
+    }  
+}
+
+@media (max-width:1440px) {
+    .pizzaScreen{
+        height: 100%;
+    }  
+}
+
+@media (max-width:768px) {
+    .scroll__view{
+        overflow-x:auto;
+    }
+    .row{
+        flex-wrap: nowrap;
+    }
+    .pizzaScreen{
+        height: 89.5vh;
+    }
+}
