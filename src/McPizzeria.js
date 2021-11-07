@@ -11,8 +11,11 @@ const McPizzeria = () => {
       login: false,
     },
   };
-  const [state, dispatch] = useReducer(AuthReducer, initialState);
+  const init = () => JSON.parse(sessionStorage.getItem('inicioSeccion')) || initialState;
+  const [state, dispatch] = useReducer(AuthReducer, initialState, init);
   const [message, setMessage] = useState('');
+
+  console.log(initialState, 'kksskk');
   return (
     <>
       <authContext.Provider value={{ state, dispatch }}>

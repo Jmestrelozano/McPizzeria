@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { authContext } from '../hooks/UseContext';
 import { LoginPages } from '../views/LoginPages';
-import { PizzaPages } from '../views/PizzaPages';
+
+import RouteSecundaria from './RouteSecundaria';
 
 export const RoutePrincipal = () => {
   const { state } = useContext(authContext);
@@ -10,6 +11,7 @@ export const RoutePrincipal = () => {
     inicioSesion: { login },
   } = state;
 
+  sessionStorage.setItem('inicioSeccion', JSON.stringify(state));
   console.log(state, 'rutas');
   return (
     <>
@@ -21,13 +23,13 @@ export const RoutePrincipal = () => {
             </Route>
           ) : (
             <Route path="/">
-              <PizzaPages />
+              <RouteSecundaria />
             </Route>
           )}
 
           {login ? (
             <Route exact path="/">
-              <PizzaPages />
+              <RouteSecundaria />
             </Route>
           ) : (
             <Redirect to="/login" />

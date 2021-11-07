@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Alerts } from '../../alerts/alerts';
+import firebase, { fireConfig } from '../../config/firebaseConfig';
 
 import { authContext, messageContext } from '../../hooks/UseContext';
 import { useForm } from '../../hooks/UseForm';
@@ -23,9 +24,18 @@ export const Login = () => {
     e.preventDefault();
 
     if (usuario !== '' && contraseña !== '') {
-      dispatch({ type: types.login, payload: { usuario, contraseña } });
-      history.replace('/');
-      setHideShow(true);
+      fireConfig
+        .auth()
+        .signInWithEmailAndPassword(usuario, contraseña)
+        .then((result) => {
+          console.log(result);
+          dispatch({ type: types.login, payload: { usuario: 'jorge', contraseña: '12345' } });
+          history.replace('/');
+          setHideShow(true);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
     } else {
       setHideShow(true);
       setMessage('No puede haber campos vacios');
@@ -36,12 +46,14 @@ export const Login = () => {
     setTimeout(() => {
       setHideShow(false);
     }, 3000);
+
+    console.log(fireConfig.auth().currentUser);
   }, [hideShow]);
 
   return (
     <>
       {hideShow && <Alerts typeNotify="danger" msgError={message} />}
-      <div className="container login">
+      <div className="container contenedor__Card animate__animated animate__fadeInDown">
         <img
           className="d-flex w-50 m-0-auto pt-4"
           src={process.env.PUBLIC_URL + '/assets/img/logo_1.png'}

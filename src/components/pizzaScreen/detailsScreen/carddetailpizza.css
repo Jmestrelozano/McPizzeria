@@ -1,0 +1,12 @@
+.cardDetail__Pizzeta{
+    background-color: #ffd970;
+    width: 48%;
+}
+
+
+
+@media (max-width: 768px) {
+    .cardDetail__Pizzeta{
+        width: 100%;
+    }
+}

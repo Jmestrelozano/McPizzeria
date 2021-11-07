@@ -1,0 +1,35 @@
+.img__Pizzeta {
+  width: 58%;
+  display: flex;
+  margin: auto;
+  position: relative;
+  bottom: 0.7rem;
+}
+.textoBody__Pizzeta {
+  font-size: 0.7rem;
+  color: #909090;
+  font-weight: 500;
+}
+
+.card__Pizzeta {
+  transition: all 0.6s ease-out;
+  perspective: 1000pxs;
+}
+
+.card__Pizzeta:hover {
+  transition: all 0.3s linear;
+  transform: scale(1.1);
+}
+
+.contendor__SuperiorPizzeta {
+  width: 90%;
+  background-color: #ffd970;
+}
+
+@media (max-width: 768px) {
+  .contenedor__DetailsPizzeta {
+    margin-top: 1rem;
+    overflow: auto;
+    height: 11rem;
+  }
+}

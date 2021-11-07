@@ -4,7 +4,7 @@ import '../contentView/contentview.css';
 export const ContentView = ({ children }) => {
   return (
     <div>
-      <div className="row mr-0">
+      <div style={{ height: '100vh' }} className="row mr-0">
         <div className="overflow-hidden col-sm-12 col-md-6 col-lg-6 pr-0">
           <img
             className="w-100 contentView__image"

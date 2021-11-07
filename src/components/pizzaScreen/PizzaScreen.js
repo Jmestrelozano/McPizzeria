@@ -5,16 +5,24 @@ import { types } from '../../types/type';
 import { CardPizza } from './CardPizza';
 import '../pizzaScreen/pizzascreen.css';
 import { Footer } from '../footer/Footer';
+import { fireConfig } from '../../config/firebaseConfig';
 export const PizzaScreen = () => {
   const { state, dispatch } = useContext(authContext);
 
   const { usuario, contraseña, login } = state.inicioSesion;
   const handleLogout = () => {
+    fireConfig
+      .auth()
+      .signOut()
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
     dispatch({ type: types.loggout, payload: { usuario, contraseña, login: !login } });
   };
+
+  console.log(fireConfig.auth().currentUser);
   return (
     <div>
-      <div className="container pizzaScreen">
+      <div className="container pizzaScreen contenedor__Card animate__animated animate__fadeInDown">
         <div className="d-flex justify-content-end">
           <button className="d-flex align-items-end btn" onClick={handleLogout}>
             <img
